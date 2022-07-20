@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<body  id="body" style="background-color:rgb(0, 0, 0) ; text-align: center;" >
+    <br>
+
+
+<div style="margin-left:1rem ; text-align: center; margin-top: 6rem ; background-color: rgb(0, 0, 0); height: 40rem; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" >
+
+  <br>
+  <br>
+
+    <h1 style="color: rgba(187, 22, 22, 0.788);font-size: 4rem;">STOP WATCH</h1>
+    
+
+<h1 id="watch" style="color: rgba(187, 22, 22, 0.788);  border: solid 1px; padding: 2rem ; font-size: 6rem;">
+    <span id="h">00</span> : <span id="m">00</span> :
+    <span id="s">00</span> : <span id="ms">00</span></h1>
+ <br>
+    
+ <div style="margin-left: 6rem;">
+        <button id="start" style="background-color:transparent ;cursor: pointer; padding: 1rem;  border: solid 3px ; border-color: rgba(238, 8, 8, 0.712); color:rgba(0, 245, 33, 0.808) ;  text-decoration: none;  margin-right: 6rem; font-size: 2rem;">START</button>
+        <button id="stop"  style="background-color:transparent ;cursor: pointer; padding: 1rem;  border: solid 3px ; border-color: rgba(238, 8, 8, 0.712);  color:rgba(255, 0, 0, 0.808) ; text-decoration: none;  margin-right: 6rem; font-size: 2rem;">STOP</button>
+        <button id="reset" style="background-color:transparent ;cursor: pointer; padding: 1rem;  border: solid 3px ; border-color: rgba(238, 8, 8, 0.712); color:rgb(255, 255, 255) ; text-decoration: none;  margin-right: 6rem; font-size: 2rem;">RESET</button>
+      </div>
+ 
+</div>
+ 
+ <script>
+ 
+ window.onload = function () {
+ 
+
+        
+var start= document.getElementById("start").addEventListener("click",startWatch);
+var stop= document.getElementById("stop").addEventListener("click",stopWatch);
+var reset= document.getElementById("reset").addEventListener("click",resetWatch);
+
+var hour =  document.getElementById("h");
+var minute =  document.getElementById("m");
+var seconds =  document.getElementById("s");
+var msecond =  document.getElementById("ms");
+
+     var h =00;
+     var   m = 00;
+      var   s = 00;
+       var  ms = 00;
+        var Interval ;
+            
+       
+function startWatch(){
+
+        clearInterval(Interval);
+     Interval = setInterval(startTime, 10);
+  }
+
+
+
+    function stopWatch() {
+       clearInterval(Interval);
+       document.getElementById("start").innerHTML= "CONTINUE"
+
+  }
+  
+
+   function resetWatch() {
+
+     clearInterval(Interval);
+     document.getElementById("start").innerHTML= "START";
+
+
+        h = 00;
+        m = 00;
+        s = 00;
+        ms = 00;
+        
+        hour.innerHTML =  "0" + h
+        minute.innerHTML =  "0" + m
+        seconds.innerHTML =  "0" + s
+        msecond.innerHTML = "0" + ms
+  }
+  
+  function startTime () {
+    ms++; 
+    
+    if( ms<= 9){
+      msecond.innerHTML = "0" + ms;
+    }
+    
+    if (ms > 9){
+        msecond.innerHTML = ms;
+      
+    } 
+    
+    if (ms > 99) {
+      s++;
+
+      seconds.innerHTML = "0" + s;
+      ms = 0;
+      msecond.innerHTML = "0" + ms;
+    }
+    
+    if (s > 9){
+      seconds.innerHTML = s;
+    }
+
+    if (s > 60) {
+      m++;
+
+      minute.innerHTML = "0" + m;
+      s = 0;
+      seconds.innerHTML = "0" + s;
+     
+    }
+
+    if ( m > 9){
+     minute.innerHTML = m;
+    }
+
+    if (m > 60) {
+      h++;
+
+      hour.innerHTML = "0" + h;
+      m = 0;
+      minute.innerHTML = "0" + m;
+     
+    }
+
+    if ( h > 9){
+    hour.innerHTML = h;
+      }
+  
+    }
+  
+  }
+  
+ </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
